@@ -7,9 +7,50 @@
 
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/main.css">
+
     <title>Frontend Mentor | Tip calculator app</title>
 </head>
 <body>
+    <header>
+        <a href="index.html"><img src="./images/logo.svg" alt="Splitter logo"></a>
+    </header>
+    <main>
+        <form action="">
+            <div>
+                <label for="billAmount">Bill</label>
+                <input type="text" name="billAmount" placeholder="142.55">
+            </div>
+            <fieldset>
+                <legend>Select Tip %</legend>
+                <button id="tipOpotion1">5%</button>
+                <button id="tipOpotion2">10%</button>
+                <button id="tipOpotion3">15%</button>
+                <button id="tipOpotion4">25%</button>
+                <button id="tipOpotion5">50%</button>
+                <button id="tipOpotion6">Custom</button>
+            </fieldset>
+            <div>
+                <label for="numOfPeople">Number of People</label>
+                <input type="text" name="numOfPeople" placeholder="5">
+            </div>
+            <div>
+                <div>
+                    <span>Tip Amount <span>/ person</span></span>
+                    <span>$4.27</span>
+                </div>
+                <div>
+                    <span>Total <span>/ person</span></span>
+                    <span>$32.79</span>
+                </div>
+                <button>Reset</button>
+            </div>
+        </form>
+    </main>
     
     <footer>
         <div class="attribution">
