@@ -16,17 +16,17 @@
     <title>Frontend Mentor | Tip calculator app</title>
 </head>
 <body class="w-screen h-screen flex flex-col justify-center items-center bg-lightGrayCyan font-mono">
-    <div class="relative w-84">
-        <header class="flex flex-col items-center p-10">
+    <div class="relative w-96 lg:w-[55rem]">
+        <header class="flex flex-col items-center p-10 lg:mb-10">
             <a href="index.html"><img src="./images/logo.svg" alt="Splitter logo"></a>
         </header>
-        <main class="bg-white w-full p-6 rounded-3xl shadow-2xl">
-            <form action="">
-                <div class="flex flex-col items-start">
+        <main class="bg-white w-full p-6 rounded-3xl shadow-lg lg:px-8 lg:py-8">
+            <form class="lg:grid lg:grid-rows-3 lg:grid-cols-2 lg:grid-flow-col lg:gap-x-10" action="">
+                <div class="flex flex-col items-start lg:self-center lg:mb-8">
                     <label class="text-darkGrayCyan block mb-2" for="billAmount">Bill</label>
                     <input class="bg-veryLightGrayCyan w-full bg-[url('../images/icon-dollar.svg')] bg-no-repeat bg-[top_50%_left_1.25rem] text-right p-2 rounded-md text-2xl text-veryDarkCyan placeholder:text-veryDarkCyan" type="text" name="billAmount" placeholder="142.55">
                 </div>
-                <fieldset class="grid grid-cols-2 gap-4 my-8">
+                <fieldset class="grid grid-cols-2 gap-4 my-8 lg:grid-cols-3 lg:my-0 lg:justify-center">
                     <legend class="text-darkGrayCyan mb-3">Select Tip %</legend>
                     <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2" id="tipOpotion1">5%</button>
                     <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2" id="tipOpotion2">10%</button>
@@ -35,25 +35,25 @@
                     <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2" id="tipOpotion5">50%</button>
                     <button class="bg-veryLightGrayCyan rounded-md text-darkGrayCyan text-2xl py-2" id="tipOpotion6">Custom</button>
                 </fieldset>
-                <div class="mb-8">
+                <div class="mb-8 lg:mb-0 lg:self-center lg:mt-8">
                     <label class="text-darkGrayCyan block mb-2" for="numOfPeople">Number of People</label>
                     <input class="bg-veryLightGrayCyan w-full bg-[url('../images/icon-person.svg')] bg-no-repeat bg-[top_50%_left_1.25rem] text-right p-2 rounded-md text-2xl text-veryDarkCyan placeholder:text-veryDarkCyan" type="text" name="numOfPeople" placeholder="5">
                 </div>
-                <div class="bg-veryDarkCyan rounded-2xl pt-10 px-6 pb-6 flex flex-col items-center gap-8">
-                    <div class="flex flex-row justify-between w-full">
+                <div class="bg-veryDarkCyan rounded-2xl pt-10 px-6 pb-6 flex flex-col items-center gap-8 lg:row-span-3 lg:h-full">
+                    <div class="flex flex-row justify-between w-full lg:items-center">
                         <span class="w-2/5 text-veryLightGrayCyan leading-5">Tip Amount <span class="text-grayCyan text-sm block">/ person</span></span>
-                        <span class="text-3xl text-strongCyan">$4.27</span>
+                        <span class="text-3xl text-strongCyan lg:text-5xl">$4.27</span>
                     </div>
-                    <div class="flex flex-row justify-between w-full">
+                    <div class="flex flex-row justify-between w-full lg:items-center">
                         <span class="w-2/5 text-veryLightGrayCyan leading-5">Total <span class="text-grayCyan block text-sm">/ person</span></span>
-                        <span class="text-3xl text-strongCyan">$32.79</span>
+                        <span class="text-3xl text-strongCyan lg:text-5xl">$32.79</span>
                     </div>
-                    <button class="bg-strongCyan w-full rounded-md py-3 text-xl uppercase text-veryDarkCyan">Reset</button>
+                    <button class="bg-strongCyan w-full rounded-md py-3 text-xl uppercase text-veryDarkCyan lg:mt-auto">Reset</button>
                 </div>
             </form>
         </main>
     </div>
-    <footer class="hidden text-xs font-sans absolute bottom-1 text-veryDarkCyan">
+    <footer class="hidden text-xs font-sans absolute bottom-1 text-veryDarkCyan lg:block">
         <div class="attribution">
             Challenge by <a class="text-strongCyan" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
             Coded by <a class="text-strongCyan" href="https://robojojo.co/">Jordan Kisiel</a>.
