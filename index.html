@@ -15,8 +15,8 @@
 
     <title>Frontend Mentor | Tip calculator app</title>
 </head>
-<body class="w-screen h-screen flex flex-col justify-center items-center bg-lightGrayCyan font-mono">
-    <div class="relative w-96 lg:w-[55rem]">
+<body class="w-screen h-screen flex flex-col items-center bg-lightGrayCyan font-mono">
+    <div class="relative w-96 lg:mt-[6%] lg:w-[55rem]">
         <header class="flex flex-col items-center p-10 lg:mb-10">
             <a href="index.html"><img src="./images/logo.svg" alt="Splitter logo"></a>
         </header>
@@ -24,31 +24,31 @@
             <form class="lg:grid lg:grid-rows-3 lg:grid-cols-2 lg:grid-flow-col lg:gap-x-10" action="">
                 <div class="flex flex-col items-start lg:self-center lg:mb-8">
                     <label class="text-darkGrayCyan block mb-2" for="billAmount">Bill</label>
-                    <input class="bg-veryLightGrayCyan w-full bg-[url('../images/icon-dollar.svg')] bg-no-repeat bg-[top_50%_left_1.25rem] text-right p-2 rounded-md text-2xl text-veryDarkCyan placeholder:text-veryDarkCyan border-2 border-transparent hover:border-strongCyan" type="text" name="billAmount" placeholder="142.55">
+                    <input id="billAmount" class="bg-veryLightGrayCyan w-full bg-[url('../images/icon-dollar.svg')] bg-no-repeat bg-[top_50%_left_1.25rem] text-right p-2 rounded-md text-2xl text-veryDarkCyan placeholder:text-veryDarkCyan border-2 border-transparent hover:border-strongCyan focus:outline-none" type="text" name="billAmount" placeholder="142.55">
                 </div>
                 <fieldset class="grid grid-cols-2 gap-4 my-8 lg:grid-cols-3 lg:my-0 lg:justify-center">
                     <legend class="text-darkGrayCyan mb-3">Select Tip %</legend>
-                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan" id="tipOpotion1">5%</button>
-                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan" id="tipOpotion2">10%</button>
-                    <button class="bg-strongCyan rounded-md text-veryDarkCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan" id="tipOpotion3">15%</button>
-                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2hover:bg-lightGrayCyan hover:text-veryDarkCyan" id="tipOpotion4">25%</button>
-                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan" id="tipOpotion5">50%</button>
-                    <button class="bg-veryLightGrayCyan rounded-md text-darkGrayCyan text-2xl py-2 border-2 border-transparent hover:border-strongCyan" id="tipOpotion6">Custom</button>
+                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan">5%</button>
+                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan">10%</button>
+                    <button class="bg-strongCyan rounded-md text-veryDarkCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan">15%</button>
+                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2hover:bg-lightGrayCyan hover:text-veryDarkCyan">25%</button>
+                    <button class="bg-veryDarkCyan rounded-md text-veryLightGrayCyan text-2xl py-2 hover:bg-lightGrayCyan hover:text-veryDarkCyan">50%</button>
+                    <input class="bg-veryLightGrayCyan rounded-md text-veryDarkCyan text-2xl py-2 border-2 border-transparent text-center hover:border-strongCyan focus:text-right focus:border-strongCyan focus:outline-none focus:pr-3 focus:placeholder:opacity-0 placeholder:text-center placeholder:text-darkGrayCyan" id="customTip" placeholder="Custom">
                 </fieldset>
                 <div class="mb-8 lg:mb-0 lg:self-center lg:mt-8">
                     <label class="text-darkGrayCyan block mb-2" for="numOfPeople">Number of People</label>
-                    <input class="bg-veryLightGrayCyan w-full bg-[url('../images/icon-person.svg')] bg-no-repeat bg-[top_50%_left_1.25rem] text-right p-2 rounded-md text-2xl text-veryDarkCyan placeholder:text-veryDarkCyan border-2 border-transparent hover:border-strongCyan" type="text" name="numOfPeople" placeholder="5">
+                    <input id="numOfPeople" class="bg-veryLightGrayCyan w-full bg-[url('../images/icon-person.svg')] bg-no-repeat bg-[top_50%_left_1.25rem] text-right p-2 rounded-md text-2xl text-veryDarkCyan placeholder:text-veryDarkCyan border-2 border-transparent hover:border-strongCyan focus:outline-none" type="text" name="numOfPeople" placeholder="5">
                 </div>
                 <div class="bg-veryDarkCyan rounded-2xl pt-10 px-6 pb-6 flex flex-col items-center gap-8 lg:row-span-3 lg:h-full">
                     <div class="flex flex-row justify-between w-full lg:items-center lg:mb-6">
                         <span class="w-2/5 text-veryLightGrayCyan leading-5">Tip Amount <span class="text-grayCyan text-sm block">/ person</span></span>
-                        <span class="text-3xl text-strongCyan lg:text-5xl">$4.27</span>
+                        <span id="tipAmount" class="text-3xl text-strongCyan lg:text-5xl">$4.27</span>
                     </div>
                     <div class="flex flex-row justify-between w-full lg:items-center">
                         <span class="w-2/5 text-veryLightGrayCyan leading-5">Total <span class="text-grayCyan block text-sm">/ person</span></span>
-                        <span class="text-3xl text-strongCyan lg:text-5xl">$32.79</span>
+                        <span id="totalPerPerson" class="text-3xl text-strongCyan lg:text-5xl">$32.79</span>
                     </div>
-                    <button class="bg-strongCyan w-full rounded-md py-3 text-xl uppercase text-veryDarkCyan hover:bg-lightGrayCyan lg:mt-auto">Reset</button>
+                    <button id="reset" class="bg-strongCyan w-full rounded-md py-3 text-xl uppercase text-veryDarkCyan hover:bg-lightGrayCyan lg:mt-auto">Reset</button>
                 </div>
             </form>
         </main>
@@ -59,5 +59,6 @@
             Coded by <a class="text-strongCyan" href="https://robojojo.co/">Jordan Kisiel</a>.
         </div>
     </footer>
+    <script src="js/app.js"></script>
 </body>
 </html>
