@@ -1,7 +1,9 @@
 /* =============================================
 
 TODO:
--
+-test with different values to make sure calculations are done correctly
+-review design files to make sure I'm not missing anything (besides the things I decided against)
+-test in mobile to make it works
 
 ============================================== */
 
@@ -36,10 +38,28 @@ customTip.addEventListener('blur', (e) => {
     calculateTotals();
 });
 customTip.addEventListener('keydown', checkForValidCharacter);
+customTip.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter'){
+        e.preventDefault();
+        e.target.blur();
+    }
+});
 billAmount.addEventListener('blur', calculateTotals);
 billAmount.addEventListener('keydown', checkForValidCharacter);
+billAmount.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter'){
+        e.preventDefault();
+        e.target.blur();
+    }
+});
 numOfPeople.addEventListener('blur', calculateTotals);
 numOfPeople.addEventListener('keydown', checkForValidCharacter);
+numOfPeople.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter'){
+        e.preventDefault();
+        e.target.blur();
+    }
+});
 reset.addEventListener('click', resetForm);
 
 
