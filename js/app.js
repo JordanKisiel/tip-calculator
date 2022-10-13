@@ -1,3 +1,18 @@
+/* =============================================
+
+TODO:
+-prevent user from typing in invalid characters at all
+  -currently I clean the inputs pretty well but UX would
+    probably be better if I just didn't let the user type incorrect
+    input at all
+      -this includes typing more than one '.' for the bill or custom tip percentage
+
+============================================== */
+
+
+
+
+
 //grab elements
 const billAmount = document.getElementById('billAmount');
 const tipOptions = document.querySelectorAll('fieldset > button');
@@ -8,21 +23,51 @@ const totalPerPerson = document.getElementById('totalPerPerson');
 const reset = document.getElementById('reset');
 
 //declare variables
-let tipPercentage = '15%';
+const DEFAULT_TIP_PERCENTAGE = '15%';
+let tipPercentage = DEFAULT_TIP_PERCENTAGE;
 
 
 //event listeners
-tipOptions.forEach(button => button.addEventListener('click', selectPresetTipAmount));
+tipOptions.forEach(button => button.addEventListener('click', (e) => {
+    selectPresetTipAmount(e);
+    calculateTotals();
+}));
 customTip.addEventListener('blur', (e) => {
     setCustomTipAmount(e);
     calculateTotals();
 });
 billAmount.addEventListener('blur', calculateTotals);
 numOfPeople.addEventListener('blur', calculateTotals);
+reset.addEventListener('click', resetForm);
 
 
 
 //callback functions
+function resetForm(e){
+    e.preventDefault();
+
+    billAmount.value = '';
+
+    //reset back to default tip button preset and tip amount
+    let defaultTipButton;
+    for(let i = 0; i < tipOptions.length; i++){
+        if(tipOptions.item(i).innerHTML === DEFAULT_TIP_PERCENTAGE){
+            defaultTipButton = tipOptions.item(i);
+        }
+    }
+
+    tipOptions.forEach(button => setInactiveAppearance(button));
+    setActiveAppearance(defaultTipButton);
+    tipPercentage = DEFAULT_TIP_PERCENTAGE;
+
+    customTip.value = '';
+
+    numOfPeople.value = '';
+
+    displayTotals(0, 0);
+
+}
+
 function selectPresetTipAmount(e){
     e.preventDefault();
     
@@ -71,10 +116,14 @@ function calculateTotals(){
         let totalPerPerson = Number(bill) * (1 + Number(tip)/100) / Number(people);
         let tipPerPerson = Number(bill) * (Number(tip)/100) / Number(people);
 
+        //round totals up to next cent
+        totalPerPerson = roundToNearestCent(totalPerPerson);
+        tipPerPerson = roundToNearestCent(tipPerPerson);
+
         displayTotals(totalPerPerson, tipPerPerson);
     }
     else{
-        console.log('something went wrong');
+        console.log('cannot calculate');
     }
 }
 
@@ -82,6 +131,10 @@ function calculateTotals(){
 
 
 //helper functions
+function roundToNearestCent(amount){
+    return Math.ceil(amount * 100)/100;
+}
+
 function displayTotals(total, tip){
     total = total.toFixed(2);
     tip = tip.toFixed(2);
