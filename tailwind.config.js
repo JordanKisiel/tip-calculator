@@ -23,6 +23,9 @@ module.exports = {
       },
       fontFamily: {
         'mono': ['Space Mono', ...defaultTheme.fontFamily.mono]
+      },
+      screens:{
+        'no-hover': {'raw': '(hover: none)'}
       }
     },
   },

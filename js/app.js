@@ -1,11 +1,7 @@
 /* =============================================
 
 TODO:
--prevent user from typing in invalid characters at all
-  -currently I clean the inputs pretty well but UX would
-    probably be better if I just didn't let the user type incorrect
-    input at all
-      -this includes typing more than one '.' for the bill or custom tip percentage
+-
 
 ============================================== */
 
@@ -23,6 +19,9 @@ const totalPerPerson = document.getElementById('totalPerPerson');
 const reset = document.getElementById('reset');
 
 //declare variables
+const BILL_ALLOWED_CHARS = /[0-9.]/;
+const PEOPLE_ALLOWED_CHARS = /[1-9]/;
+const TIP_ALLOWED_CHARS = /[0-9.%]/;
 const DEFAULT_TIP_PERCENTAGE = '15%';
 let tipPercentage = DEFAULT_TIP_PERCENTAGE;
 
@@ -36,13 +35,64 @@ customTip.addEventListener('blur', (e) => {
     setCustomTipAmount(e);
     calculateTotals();
 });
+customTip.addEventListener('keydown', checkForValidCharacter);
 billAmount.addEventListener('blur', calculateTotals);
+billAmount.addEventListener('keydown', checkForValidCharacter);
 numOfPeople.addEventListener('blur', calculateTotals);
+numOfPeople.addEventListener('keydown', checkForValidCharacter);
 reset.addEventListener('click', resetForm);
 
 
 
 //callback functions
+function checkForValidCharacter(e){
+    if(e.target === billAmount){
+        //allow keyboard shortcuts and useful keys like backspace
+        if(e.ctrlKey || e.altKey || typeof e.key !== 'string' || e.key.length !== 1){
+            return;
+        }
+
+        if(!BILL_ALLOWED_CHARS.test(e.key)){
+            e.preventDefault();
+        }
+        else{
+            if(e.key === '.' && billAmount.value.includes('.')){
+                e.preventDefault();
+            }
+        }
+    }
+    
+    if(e.target === numOfPeople){
+        //allow keyboard shortcuts and useful keys like backspace
+        if(e.ctrlKey || e.altKey || typeof e.key !== 'string' || e.key.length !== 1){
+            return;
+        }
+
+        if(!PEOPLE_ALLOWED_CHARS.test(e.key)){
+            e.preventDefault();
+        }
+    }
+    
+    if(e.target === customTip){
+        //allow keyboard shortcuts and useful keys like backspace
+        if(e.ctrlKey || e.altKey || typeof e.key !== 'string' || e.key.length !== 1){
+            return;
+        }
+
+        if(!TIP_ALLOWED_CHARS.test(e.key)){
+            e.preventDefault();
+        }
+        else{
+            if(e.key === '.' && customTip.value.includes('.')){
+                e.preventDefault();
+            }
+            if(e.key === '%' && customTip.value.includes('%')){
+                e.preventDefault();
+            }
+        }
+    }
+}
+
 function resetForm(e){
     e.preventDefault();
 
